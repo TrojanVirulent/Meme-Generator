@@ -1,7 +1,7 @@
 let top_text, bottom_text, imageInput, topTextSize, bottomTextSize, generate_btn, canvas, ctx;
 
 function generate_meme(img, t_text, b_text, t_text_size, b_text_size)
-{
+{ 
 	canvas.height = img.height;
 	canvas.width = img.width;
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -14,30 +14,29 @@ function generate_meme(img, t_text, b_text, t_text_size, b_text_size)
 
 	//Top text font size
 	fontSize =canvas.width * t_text_size;
-	ctx.font = fontSize + 'px Impact';
+	ctx.font = fontSize + 'px Comic Sans MS';
 	ctx.lineWidth = fontSize / 15;
-	document.getElementById("tfs").innerHTML = `<p>${t_text_size * 100}</p>`;
+	document.getElementById("tfs").innerHTML = t_text_size * 100;
 
 
 
 	//Draw top text
 	ctx.textBaseLine = 'top';
 	t_text.split('\n').forEach( function(t, i){
-		ctx.fillText(t, canvas.width / 2, i * fontSize+20, canvas.width);
-		ctx.strokeText(t, canvas.width / 2, i * fontSize+20, canvas.width);
+		ctx.fillText(t, canvas.width / 2, i * fontSize+(t_text_size*1.5*canvas.height), canvas.width);
+		ctx.strokeText(t, canvas.width / 2, i * fontSize+(t_text_size*1.5*canvas.height), canvas.width);
 	});
 
 	//Bottom text font size
 	fontSize =canvas.width * b_text_size;
-	ctx.font = fontSize + 'px Impact';
+	ctx.font = fontSize + 'px Comic Sans MS';
 	ctx.lineWidth = fontSize / 15;
-	document.getElementById("bfs").innerHTML = `<p>${b_text_size * 100}</p>`
-
+	document.getElementById("bfs").innerHTML = b_text_size * 100;
 	//Draw bottom text
 	ctx.textBaseLine = 'bottom';
 	b_text.split('\n').reverse().forEach( function(t, i){
-		ctx.fillText(t, canvas.width / 2, canvas.height- i * fontSize-5, canvas.width);
-		ctx.strokeText(t, canvas.width / 2, canvas.height- i * fontSize-5, canvas.width);
+		ctx.fillText(t, canvas.width / 2, canvas.height- (i * fontSize + 0.1 * canvas.height), canvas.width+40);
+		ctx.strokeText(t, canvas.width / 2, canvas.height- ( i * fontSize + 0.1 * canvas.height), canvas.width+40);
 	});
 
 }
